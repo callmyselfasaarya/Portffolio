@@ -1,11 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Download, Menu, X } from 'lucide-react';
+import { Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Download, Menu, X, Instagram, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
+import ThemeToggle from '@/components/ThemeToggle';
+import BackgroundParticles from '@/components/BackgroundParticles';
+import ThreeParticles from '@/components/ParticleField';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,48 +56,48 @@ const Index = () => {
   };
 
   const skills = [
-    { name: 'JavaScript', level: 90 },
-    { name: 'React', level: 85 },
-    { name: 'TypeScript', level: 80 },
-    { name: 'Node.js', level: 75 },
-    { name: 'Python', level: 70 },
-    { name: 'CSS/Tailwind', level: 90 },
+    { name: 'Python', level: 95 },
+    { name: 'Machine Learning', level: 90 },
+    { name: 'Deep Learning', level: 85 },
+    { name: 'TensorFlow/PyTorch', level: 88 },
+    { name: 'Data Science', level: 92 },
+    { name: 'Computer Vision', level: 80 },
   ];
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-      liveUrl: '#',
+      title: 'Predictive Analytics Platform',
+      description: 'A comprehensive machine learning platform for predictive analytics using ensemble methods, featuring automated model selection and hyperparameter tuning.',
+      technologies: ['Python', 'Scikit-learn', 'Pandas', 'Flask'],
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
       githubUrl: '#',
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      technologies: ['Vue.js', 'Firebase', 'Vuetify'],
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop',
-      liveUrl: '#',
+      title: 'Computer Vision Object Detection',
+      description: 'Real-time object detection system using YOLO and OpenCV for autonomous vehicle applications with custom dataset training.',
+      technologies: ['Python', 'OpenCV', 'YOLO', 'TensorFlow'],
+      image: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?w=600&h=400&fit=crop',
       githubUrl: '#',
     },
     {
-      title: 'Weather Dashboard',
-      description: 'A responsive weather dashboard with location-based forecasts, interactive maps, and detailed weather analytics.',
-      technologies: ['React', 'OpenWeather API', 'Chart.js'],
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop',
-      liveUrl: '#',
+      title: 'Natural Language Processing Chatbot',
+      description: 'Advanced conversational AI system using transformer models and BERT for sentiment analysis and intent recognition.',
+      technologies: ['Python', 'NLTK', 'Transformers', 'PyTorch'],
+      image: 'https://images.unsplash.com/photo-1587560699334-bea93391dcef?w=600&h=400&fit=crop',
       githubUrl: '#',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300">
+      <BackgroundParticles />
+      <ThemeToggle />
+      
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
+      <nav className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 z-50 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="font-bold text-xl text-slate-800">
+            <div className="font-bold text-xl text-slate-800 dark:text-slate-200">
               Portfolio
             </div>
             
@@ -104,8 +107,8 @@ const Index = () => {
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`capitalize text-sm font-medium transition-colors hover:text-blue-600 ${
-                    activeSection === section ? 'text-blue-600' : 'text-slate-600'
+                  className={`capitalize text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${
+                    activeSection === section ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   {section}
@@ -115,7 +118,7 @@ const Index = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 text-slate-600 dark:text-slate-400"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -124,12 +127,12 @@ const Index = () => {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-slate-200 bg-white">
+            <div className="md:hidden py-4 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
               {['home', 'about', 'skills', 'projects', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className="block w-full text-left px-4 py-2 capitalize text-slate-600 hover:text-blue-600 hover:bg-slate-50"
+                  className="block w-full text-left px-4 py-2 capitalize text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800"
                 >
                   {section}
                 </button>
@@ -140,22 +143,32 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <div className="mb-8">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 p-1">
-              <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                <span className="text-4xl font-bold text-slate-700">JD</span>
-              </div>
-            </div>
-          </div>
-          
-          <h1 className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6">
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">John Doe</span>
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative">
+        <ThreeParticles />
+        
+        {/* Social Media Links */}
+        <div className="absolute top-24 right-8 flex flex-col space-y-4 z-10">
+          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md">
+            <Github size={20} />
+          </Button>
+          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md">
+            <Linkedin size={20} />
+          </Button>
+          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md">
+            <Twitter size={20} />
+          </Button>
+          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md">
+            <Instagram size={20} />
+          </Button>
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center animate-fade-in z-10">          
+          <h1 className="text-4xl sm:text-6xl font-bold text-slate-800 dark:text-slate-200 mb-6">
+            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">Aarya</span>
           </h1>
           
-          <p className="text-xl sm:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
-            Full-Stack Developer & UI/UX Designer passionate about creating beautiful, functional web experiences
+          <p className="text-xl sm:text-2xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto">
+            Machine Learning Engineer & Data Scientist passionate about creating intelligent solutions with AI
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -168,7 +181,7 @@ const Index = () => {
             <Button 
               variant="outline"
               onClick={() => scrollToSection('contact')}
-              className="border-2 border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-3 rounded-full text-lg font-medium transition-all duration-300"
+              className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-8 py-3 rounded-full text-lg font-medium transition-all duration-300"
             >
               Get In Touch
             </Button>
@@ -177,24 +190,25 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">About Me</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-200 mb-4">About Me</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto"></div>
           </div>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <p className="text-lg text-slate-600 leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of experience creating web applications 
-                that solve real-world problems. I love turning complex challenges into simple, beautiful designs.
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                I'm a passionate machine learning engineer with expertise in developing intelligent systems 
+                that solve complex real-world problems. I specialize in deep learning, computer vision, 
+                and natural language processing.
               </p>
               
-              <p className="text-lg text-slate-600 leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies, contributing to open-source 
-                projects, or hiking in the great outdoors. I believe in continuous learning and staying 
-                up-to-date with the latest industry trends.
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                When I'm not training models or analyzing data, you can find me exploring new AI research papers, 
+                contributing to open-source ML projects, or experimenting with the latest frameworks. 
+                I believe in the power of AI to transform industries and improve lives.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
@@ -214,8 +228,8 @@ const Index = () => {
             </div>
             
             <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-                <div className="text-6xl text-slate-400">👨‍💻</div>
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 flex items-center justify-center">
+                <div className="text-6xl">🤖</div>
               </div>
             </div>
           </div>
@@ -223,21 +237,21 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">Skills & Expertise</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-200 mb-4">Skills & Expertise</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto"></div>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {skills.map((skill, index) => (
-              <div key={skill.name} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div key={skill.name} className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="font-semibold text-slate-800">{skill.name}</span>
-                  <span className="text-sm text-slate-600">{skill.level}%</span>
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">{skill.name}</span>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">{skill.level}%</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2">
+                <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                   <div 
                     className="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-1000 ease-out"
                     style={{ width: `${skill.level}%` }}
@@ -250,16 +264,16 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">Featured Projects</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-200 mb-4">Featured Projects</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto"></div>
           </div>
           
           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
                 <div className="aspect-video overflow-hidden">
                   <img 
                     src={project.image} 
@@ -268,14 +282,14 @@ const Index = () => {
                   />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">{project.title}</h3>
-                  <p className="text-slate-600 mb-4 line-clamp-3">{project.description}</p>
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">{project.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">{project.description}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech) => (
                       <span 
                         key={tech} 
-                        className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full"
+                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm rounded-full"
                       >
                         {tech}
                       </span>
@@ -283,10 +297,6 @@ const Index = () => {
                   </div>
                   
                   <div className="flex gap-3">
-                    <Button size="sm" className="flex items-center gap-2">
-                      <ExternalLink size={16} />
-                      Live Demo
-                    </Button>
                     <Button variant="outline" size="sm" className="flex items-center gap-2">
                       <Github size={16} />
                       Code
@@ -300,13 +310,13 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">Get In Touch</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-200 mb-4">Get In Touch</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              I'm always interested in new opportunities and exciting projects. 
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              I'm always interested in new opportunities and exciting ML projects. 
               Let's discuss how we can work together.
             </p>
           </div>
@@ -315,77 +325,78 @@ const Index = () => {
             {/* Contact Info */}
             <div className="space-y-8">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Mail className="text-blue-600" size={20} />
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                  <Mail className="text-blue-600 dark:text-blue-400" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-800">Email</h3>
-                  <p className="text-slate-600">john.doe@example.com</p>
+                  <h3 className="font-semibold text-slate-800 dark:text-slate-200">Email</h3>
+                  <p className="text-slate-600 dark:text-slate-400">thisisaarya29@gmail.com</p>
                 </div>
               </div>
               
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Phone className="text-blue-600" size={20} />
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                  <Phone className="text-blue-600 dark:text-blue-400" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-800">Phone</h3>
-                  <p className="text-slate-600">+1 (555) 123-4567</p>
+                  <h3 className="font-semibold text-slate-800 dark:text-slate-200">Phone</h3>
+                  <p className="text-slate-600 dark:text-slate-400">+91 9944553388</p>
                 </div>
               </div>
               
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <MapPin className="text-blue-600" size={20} />
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                  <MapPin className="text-blue-600 dark:text-blue-400" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-800">Location</h3>
-                  <p className="text-slate-600">San Francisco, CA</p>
+                  <h3 className="font-semibold text-slate-800 dark:text-slate-200">Location</h3>
+                  <p className="text-slate-600 dark:text-slate-400">Salem, Tamil Nadu</p>
                 </div>
               </div>
             </div>
             
             {/* Contact Form */}
-            <Card className="bg-white shadow-lg">
+            <Card className="bg-white dark:bg-slate-900 shadow-lg border-slate-200 dark:border-slate-700">
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                         First Name
                       </label>
-                      <Input placeholder="John" required />
+                      <Input placeholder="John" required className="dark:bg-slate-800 dark:border-slate-600" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                         Last Name
                       </label>
-                      <Input placeholder="Doe" required />
+                      <Input placeholder="Doe" required className="dark:bg-slate-800 dark:border-slate-600" />
                     </div>
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                       Email
                     </label>
-                    <Input type="email" placeholder="john@example.com" required />
+                    <Input type="email" placeholder="john@example.com" required className="dark:bg-slate-800 dark:border-slate-600" />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                       Subject
                     </label>
-                    <Input placeholder="Project Inquiry" required />
+                    <Input placeholder="ML Project Inquiry" required className="dark:bg-slate-800 dark:border-slate-600" />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                       Message
                     </label>
                     <Textarea 
-                      placeholder="Tell me about your project..."
+                      placeholder="Tell me about your ML project..."
                       rows={5}
                       required
+                      className="dark:bg-slate-800 dark:border-slate-600"
                     />
                   </div>
                   
@@ -403,10 +414,10 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-800 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto text-center">
+      <footer className="bg-slate-800 dark:bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+        <div className="max-w-6xl mx-auto text-center">          
           <p className="text-slate-400 mb-4">
-            © 2024 John Doe. All rights reserved.
+            © 2024 Aarya. All rights reserved.
           </p>
           <div className="flex justify-center space-x-6">
             <button className="text-slate-400 hover:text-white transition-colors">
