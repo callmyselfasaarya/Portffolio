@@ -53,12 +53,12 @@ const Index = () => {
   };
 
   const skills = [
-    { name: 'Python', level: 95 },
-    { name: 'Machine Learning', level: 90 },
-    { name: 'Deep Learning', level: 85 },
-    { name: 'TensorFlow/PyTorch', level: 88 },
-    { name: 'Data Science', level: 92 },
-    { name: 'Computer Vision', level: 80 },
+    { name: 'Python', level: 95},
+    { name: 'Machine Learning', level: 70 },
+    { name: 'Deep Learning', level: 55 },
+    { name: 'TensorFlow/PyTorch', level: 80 },
+    { name: 'Data Science', level: 75},
+    { name: 'Computer Vision', level: 65 },
   ];
 
   const projects = [
@@ -70,10 +70,17 @@ const Index = () => {
       githubUrl: '#',
     },
     {
-      title: 'Computer Vision Object Detection',
+      title: 'Smart Attendance System',
       description: 'Real-time object detection system using YOLO and OpenCV for autonomous vehicle applications with custom dataset training.',
       technologies: ['Python', 'OpenCV', 'YOLO', 'TensorFlow'],
       image: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?w=600&h=400&fit=crop',
+      githubUrl: '#',
+    },
+    {
+      title: 'Natural Language Processing Chatbot',
+      description: 'Advanced conversational AI system using transformer models and BERT for sentiment analysis and intent recognition.',
+      technologies: ['Python', 'NLTK', 'Transformers', 'PyTorch'],
+      image: 'https://images.unsplash.com/photo-1587560699334-bea93391dcef?w=600&h=400&fit=crop',
       githubUrl: '#',
     },
     {
@@ -143,17 +150,21 @@ const Index = () => {
         
         {/* Social Media Links */}
         <div className="absolute top-24 right-8 flex flex-col space-y-4 z-10">
-          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md">
-            <Github size={20} />
+          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md" asChild>
+            <a href="https://github.com/callmyselfasaarya" target="_blank" rel="noopener noreferrer">
+              <Github size={20} />
+            </a>
           </Button>
-          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md">
-            <Linkedin size={20} />
+          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md" asChild>
+            <a href="https://linkedin.com/in/Aarya_Lekshmanan" target="_blank" rel="noopener noreferrer">
+              <Linkedin size={20} />
+            </a>
           </Button>
-          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md">
-            <Twitter size={20} />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md">
-            <Instagram size={20} />
+
+          <Button variant="outline" size="icon" className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md" asChild>
+            <a href="https://instagram.com/aaryuah" target="_blank" rel="noopener noreferrer">
+              <Instagram size={20} />
+            </a>
           </Button>
         </div>
         
@@ -195,36 +206,34 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                I'm a passionate machine learning engineer with expertise in developing intelligent systems 
-                that solve complex real-world problems. I specialize in deep learning, computer vision, 
-                and natural language processing.
-              </p>
-              
-              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                When I'm not training models or analyzing data, you can find me exploring new AI research papers, 
-                contributing to open-source ML projects, or experimenting with the latest frameworks. 
-                I believe in the power of AI to transform industries and improve lives.
+              Passionate ML engineer specializing in deep learning, computer vision, and NLP. Dedicated to solving real-world problems through AI, with active involvement in research and open-source contributions. Committed to leveraging AI's transformative potential across industries.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="outline" className="flex items-center gap-2">
-                  <Download size={16} />
-                  Download Resume
+                <Button variant="outline" className="flex items-center gap-2" asChild>
+                  <a href="resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <Download size={16} />
+                    Download Resume
+                  </a>
                 </Button>
-                <Button variant="outline" className="flex items-center gap-2">
-                  <Github size={16} />
-                  GitHub
+                <Button variant="outline" className="flex items-center gap-2" asChild>
+                  <a href="https://github.com/callmyselfasaarya" target="_blank" rel="noopener noreferrer">
+                    <Github size={16} />
+                    GitHub
+                  </a>
                 </Button>
-                <Button variant="outline" className="flex items-center gap-2">
-                  <Linkedin size={16} />
-                  LinkedIn
+                <Button variant="outline" className="flex items-center gap-2" asChild>
+                  <a href="https://linkedin.com/in/Aarya-Lekshmanan" target="_blank" rel="noopener noreferrer">
+                    <Linkedin size={16} />
+                    LinkedIn
+                  </a>
                 </Button>
               </div>
             </div>
             
             <div className="relative">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 flex items-center justify-center">
-                <div className="text-6xl">🤖</div>
+                <div className="text-6xl"><img src="/Aarya01.jpg" alt="Aarya Lekshmanan" /></div>
               </div>
             </div>
           </div>
@@ -292,9 +301,11 @@ const Index = () => {
                   </div>
                   
                   <div className="flex gap-3">
-                    <Button variant="outline" size="sm" className="flex items-center gap-2">
-                      <Github size={16} />
-                      Code
+                    <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github size={16} />
+                        Code
+                      </a>
                     </Button>
                   </div>
                 </CardContent>
@@ -408,25 +419,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-800 dark:bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto text-center">          
-          <p className="text-slate-400 mb-4">
-            © 2024 Aarya. All rights reserved.
-          </p>
-          <div className="flex justify-center space-x-6">
-            <button className="text-slate-400 hover:text-white transition-colors">
-              <Github size={20} />
-            </button>
-            <button className="text-slate-400 hover:text-white transition-colors">
-              <Linkedin size={20} />
-            </button>
-            <button className="text-slate-400 hover:text-white transition-colors">
-              <Mail size={20} />
-            </button>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 };
