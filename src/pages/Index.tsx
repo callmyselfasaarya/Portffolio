@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Download, Menu, X, Instagram, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,8 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import ThemeToggle from '@/components/ThemeToggle';
-import BackgroundParticles from '@/components/BackgroundParticles';
-import ThreeParticles from '@/components/ParticleField';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,7 +87,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300">
-      <BackgroundParticles />
       <ThemeToggle />
       
       {/* Navigation */}
@@ -144,7 +140,6 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative">
-        <ThreeParticles />
         
         {/* Social Media Links */}
         <div className="absolute top-24 right-8 flex flex-col space-y-4 z-10">
